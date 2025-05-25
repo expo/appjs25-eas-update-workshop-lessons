@@ -48,3 +48,31 @@ In your `app.json`, add your development package name to the `android` section. 
   }
 }
 ```
+
+# Making your development build
+
+### iOS
+
+If you are building for the simulator, add this to your `eas.json`:
+
+```diff
+{
+  "build": {
+    "development": {
++      "ios": {
++        "simulator": true
++      },
+
+```
+
+Then create your development build:
+
+```bash
+eas build -p ios —-profile development
+```
+
+### Android
+
+```bash
+eas build -p android –profile development
+```
