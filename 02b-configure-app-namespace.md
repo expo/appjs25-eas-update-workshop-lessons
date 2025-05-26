@@ -126,7 +126,26 @@ module.exports = () => {
 };
 ```
 
-5. When you run your new preview build, it should use the `preview` environment variables automatically
+5. The preview and development builds have the same set of deeplinks, and we want to deeplink into the development build when we run `npx expo start` so we'll update the `scheme` to include the `appVariant`:
+
+```diff
+module.exports = () => {
+  const appVariant = process.env.APP_VARIANT || "development";
+
+  return {
+    expo: {
+      name: "Art Museum",
+-     scheme: "myapp",
++     scheme: appVariant === "development" ? "myappdev" : "myapp",
+      // other configurations...
+    },
+  };
+};
+```
+
+6. Going forward, you'll be running `npx expo start --scheme myappdev` to start the development build
+
+7. When you run your new preview build, it should use the `preview` environment variables automatically
 
 ```bash
 $ npx eas build --profile preview
@@ -136,7 +155,7 @@ Resolved "preview" environment for the build. Learn more: https://docs.expo.dev/
 Environment variables with visibility "Plain text" and "Sensitive" loaded from the "preview" environment on EAS: APP_VARIANT.
 ```
 
-6. In order to load the desired environment variables for updates, you can specify the `environment` flag:
+8. In order to load the desired environment variables for updates, you can specify the `environment` flag:
 
 ```bash
 $ npx eas update --environment preview
@@ -144,8 +163,10 @@ $ npx eas update --environment preview
 Environment variables with visibility "Plain text" and "Sensitive" loaded from the "preview" environment on EAS: APP_VARIANT.
 ```
 
-Since this is a demo app, you can probably load an update made with the `preview` environment in the `development` build and have the behaviour remain the same, but it's a good practice to specify the environment when you want to load updates.
+Since this is a demo app, you can probably load an update made with the `preview` environment in the `development` build and have the the functionality we care about remain the same, but it's a good practice to specify the environment when you want to load updates.
 
 ## See the solution
 
 Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/commit/e5f89b398aef5ea44e86326af3924ff142ffafd8)
+
+![phone setup](/assets/02/phone-setup.png)
