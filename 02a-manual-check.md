@@ -29,7 +29,7 @@ Create a button in the app that manually checks for updates. If there is an upda
 
 These are wrapped functions to help you catch errors in development builds, so you can see them in the console. Any errors in production builds will be surfaced in `checkError` and `downloadError` of `useUpdates`.
 
-2. Add a monitor section to your `app/(tabs)/settings.tsx` file:
+2. Add a monitor section to your `app/(tabs)/three.tsx` file:
 
 ```diff
       <View className="px-4 gap-y-2 py-2">
