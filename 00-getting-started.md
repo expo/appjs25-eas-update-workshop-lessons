@@ -49,6 +49,15 @@ In your `app.json`, add your development package name to the `android` section. 
 }
 ```
 
+# Configuration
+
+Set up your app to use EAS Build and EAS Update
+
+```
+eas build:configure
+eas update:configure
+```
+
 # Making your development build
 
 ### iOS
