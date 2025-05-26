@@ -83,5 +83,5 @@ eas build -p ios —-profile development
 ### Android
 
 ```bash
-eas build -p android –profile development
+eas build -p android –-profile development
 ```
