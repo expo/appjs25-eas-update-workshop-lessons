@@ -2,6 +2,12 @@
 
 We assume you have installed all the required packages and tools for the workshop. If you haven't, please refer to the [Getting Started](https://github.com/expo/appjs25-eas-update-workshop-code)
 
+You should now be logged in to your Expo account in `eas` CLI. You can verify this by running:
+
+```bash
+eas whoami
+```
+
 # Joining the org
 
 We'll be using the `appjs-2025-eas-update-workshop` organization for this workshop. If you haven't already, please provide us with your email so we can add you to the organization.
@@ -19,41 +25,17 @@ In your `app.json`, associate your project with the workshop and namespace the s
 }
 ```
 
-# App Namespaces
+# Choosing your device
 
-## iOS
+We recommend using an Android device or emulator for this workshop, as it provides a more straightforward testing experience with the Background Task API.
 
-In your `app.json`, add your development bundle identifier to the `ios` section. For example:
-
-```diff
-{
-  "expo": {
-    "ios": {
-+      "bundleIdentifier": "com.expo.appjs25updateworkshopcode.[your-username].development"
-    }
-  }
-}
-```
-
-## Android
-
-In your `app.json`, add your development package name to the `android` section. For example:
-
-```diff
-{
-  "expo": {
-    "android": {
-+      "package": "com.expo.appjs25updateworkshopcode.[your-username].development"
-    }
-  }
-}
-```
+If you use an iOS device, you must have the $99/month Apple Developer membership. You can also use an iOS simulator, but the Background Task API will be unavailable (used in 1 of 7 milestones).
 
 # Configuration
 
 Set up your app to use EAS Build and EAS Update
 
-```
+```bash
 eas build:configure
 eas update:configure
 ```
