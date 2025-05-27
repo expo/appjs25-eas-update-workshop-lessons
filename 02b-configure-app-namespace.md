@@ -6,6 +6,7 @@ We previously created a development bundle identifier (iOS) or package (Android)
 
 ### Concepts
 
+- A preview build is a standalone binary for testers - there is no development client and you do not install it from the app stores.
 - It's easier to see the changes in the app if we can install the development build alongside the preview build.
 - The incremental changes made in development will hot reload in the development build, but not in the preview build.
 - Whenever we push out a new update, we can see it work in the preview build, since the development build only loads updates from the Extensions tab.
