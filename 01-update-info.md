@@ -37,7 +37,7 @@ Display the currently running update in a new 'Settings' tab in the app. This is
 />
 ```
 
-2. Create a basic view with the `Current Updates` header.
+2. Create a basic view with the `Current Update` header in `app/(tabs)/three/tsx`:
 
 ```js
 import { StyleSheet, View, Text } from "react-native";
@@ -65,17 +65,17 @@ const styles = StyleSheet.create({
 
 3. Import the `useUpdates` hook from `expo-updates` and use it to get the current update information.
 
-```js
-import { useUpdates } from "expo-updates";
+```diff
++ import { useUpdates } from "expo-updates";
 
 //...
 export default function TabThreeScreen() {
-  const {
-    currentlyRunning,
-    isChecking,
-    isDownloading,
-    lastCheckForUpdateTimeSinceRestart,
-  } = useUpdates();
++  const {
++    currentlyRunning,
++    isChecking,
++    isDownloading,
++    lastCheckForUpdateTimeSinceRestart,
++  } = useUpdates();
 ```
 
 4. Display the current update information in the `Settings` tab.
@@ -144,6 +144,7 @@ export const currentlyRunningTitle = (
 2. Replace your original code with the new utility function:
 
 ```diff
++ import { currentlyRunningTitle } from "@/utils/updateUtils";
 //...
       <View className="px-4 gap-y-2 py-2">
         <Text className="text-l">
@@ -177,11 +178,19 @@ export const currentlyRunningDescription = (
     ` Last check: ${lastCheckForUpdateTime?.toISOString()}\n`
   );
 };
+
+const manifestMessage = (manifest: any) => {
+  return manifest?.extra?.expoClient?.extra?.message ?? "";
+};
 ```
 
 4. Replace your original code with the new utility function:
 
 ```diff
+import {
++  currentlyRunningDescription,
+  currentlyRunningTitle,
+} from "@/utils/updateUtils";
 //...
       <View className="px-4 gap-y-2 py-2">
         <Text className="text-l">
@@ -228,7 +237,7 @@ export default function TabThreeScreen() {
     lastCheckForUpdateTimeSinceRestart,
   } = useUpdates();
 
-+  const lastCheckForUpdateTime = usePersistentDate("lastCheckForUpdateTime");
++  const lastCheckForUpdateTime = usePersistentDate(lastCheckForUpdateTimeSinceRestart);
 ```
 
 3. Update the `lastCheckForUpdateTimeSinceRestart` to use the `lastCheckForUpdateTime` from the hook.
@@ -245,22 +254,24 @@ export default function TabThreeScreen() {
 
 1. Let's display a spinner while checking for updates. Import the `ActivityIndicator` from `react-native` and add it to the `Settings` tab.
 
-```ts
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+```diff
+- import { StyleSheet, Text, View } from "react-native";
++ import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
++ import colors from "@/constants/colors";
 
 // ...
 <View className="flex-row align-middle">
   <Text className="flex-1 font-semibold text-3xl px-4 py-2 bg-shade-2">
     Current Update
   </Text>
-  // Display a spinner while checking for updates
-  {isChecking || isDownloading ? (
-    <ActivityIndicator
-      style={styles.activityIndicator}
-      size="large"
-      color={colors.tint}
-    />
-  ) : null}
++  {/* Add a spinner to indicate checking for updates */}
++  {isChecking || isDownloading ? (
++    <ActivityIndicator
++      style={styles.activityIndicator}
++      size="large"
++      color={colors.tint}
++    />
++  ) : null}
 </View>;
 // ...
 ```
