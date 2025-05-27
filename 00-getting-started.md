@@ -101,3 +101,9 @@ eas build -p ios --profile development
 ```bash
 eas build -p android --profile development
 ```
+
+# Start developing
+
+```bash
+npx expo start
+```
