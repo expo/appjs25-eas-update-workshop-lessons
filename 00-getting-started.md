@@ -41,6 +41,36 @@ eas build:configure
 eas update:configure
 ```
 
+# App Namespaces
+
+## iOS
+
+In your `app.json`, add your development bundle identifier to the `ios` section. For example:
+
+```diff
+{
+  "expo": {
+    "ios": {
++      "bundleIdentifier": "com.expo.appjs25updateworkshopcode.[your-username].development"
+    }
+  }
+}
+```
+
+## Android
+
+In your `app.json`, add your development package name to the `android` section. For example:
+
+```diff
+{
+  "expo": {
+    "android": {
++      "package": "com.expo.appjs25updateworkshopcode.[your-username].development"
+    }
+  }
+}
+```
+
 # Making your development build
 
 ### iOS
