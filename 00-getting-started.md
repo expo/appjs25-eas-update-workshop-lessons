@@ -60,11 +60,11 @@ If you are building for the simulator, add this to your `eas.json`:
 Then create your development build:
 
 ```bash
-eas build -p ios —-profile development
+eas build -p ios --profile development
 ```
 
 ### Android
 
 ```bash
-eas build -p android –-profile development
+eas build -p android --profile development
 ```
