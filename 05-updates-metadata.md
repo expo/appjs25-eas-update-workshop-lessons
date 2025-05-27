@@ -11,13 +11,16 @@ Use Expo config in the `expo.extra` section to add custom metadata to your updat
 
 ### Tasks
 
-todo
+- Use `availableUpdate` from the `useUpdates` hook to extract information from the update manifest and identify if the update is critical or not.
 
 ### Resources
 
-todo
+- [Expo config](https://docs.expo.dev/versions/latest/config/app/#extra)
 
 # Exercises
+
+### Display update message
+
 
 todo
 

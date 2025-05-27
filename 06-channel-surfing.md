@@ -10,7 +10,8 @@ TODO: add in instructions to update app.js and disable anti breaking measurement
 
 ### Tasks
 
-todo
+1. Create a new channel and publish an update
+2. Dynamically switch between channels using the `Updates` API
 
 ### Resources
 
