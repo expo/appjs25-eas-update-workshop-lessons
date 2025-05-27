@@ -194,4 +194,4 @@ Running job [FORCED]
 
 ## See the solution
 
-Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/pull/1/commits/5df4060709819cd2f53fa7e06e1ad7e5271a6d1b)
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)

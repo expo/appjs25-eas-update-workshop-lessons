@@ -16,10 +16,10 @@ Create a button in the app that manually checks for updates. If there is an upda
 
 ### Resources
 
-- (checkForUpdates)[https://docs.expo.dev/versions/latest/sdk/updates/#updatescheckforupdateasync]
-- (fetchUpdate)[https://docs.expo.dev/versions/latest/sdk/updates/#updatescheckforupdateasync]
-- (reloadAsync)[https://docs.expo.dev/versions/latest/sdk/updates/#updatescheckforupdateasync]
-- (UseUpdatesReturnType)[https://docs.expo.dev/versions/latest/sdk/updates/#useupdatesreturntype]
+- [checkForUpdates](https://docs.expo.dev/versions/latest/sdk/updates/#updatescheckforupdateasync)
+- [fetchUpdate](https://docs.expo.dev/versions/latest/sdk/updates/#updatescheckforupdateasync)
+- [reloadAsync](https://docs.expo.dev/versions/latest/sdk/updates/#updatescheckforupdateasync)
+- [UseUpdatesReturnType](https://docs.expo.dev/versions/latest/sdk/updates/#useupdatesreturntype)
 
 # Exercises
 
@@ -118,4 +118,4 @@ Add a button to download the update if it is available, we'll use the `isUpdateA
 
 ## See the solution
 
-Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/pull/1/commits/6569a9ad4dc2863da29bf9eb78f4805be292d29e)
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)

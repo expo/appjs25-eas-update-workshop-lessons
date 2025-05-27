@@ -298,6 +298,6 @@ export default function TabThreeScreen() {
 
 ## See the solution
 
-Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/pull/1/commits/851ea143344d5193cca51c740da6666fcc4ac023)
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)
 
 ![settings-tab](/assets/01/milestone.png)

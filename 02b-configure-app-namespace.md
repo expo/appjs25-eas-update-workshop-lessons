@@ -201,6 +201,6 @@ Since this is a demo app, you can probably load an update made with the `preview
 
 ## See the solution
 
-Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/commit/e5f89b398aef5ea44e86326af3924ff142ffafd8)
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)
 
 ![phone setup](/assets/02/phone-setup.png)

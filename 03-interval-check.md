@@ -85,4 +85,4 @@ Automatically check for updates at a specified interval and when the app transit
 
 ## See the solution
 
-Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/pull/1/commits/821e40d4f5fd075c47f149780600a1e6350f1a4e)
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)
