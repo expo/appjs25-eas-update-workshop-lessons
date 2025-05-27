@@ -6,7 +6,8 @@ Use Expo config in the `expo.extra` section to add custom metadata to your updat
 
 ### Concepts
 
-TODO: add in instructions on how to implement a counter for critical updates.
+- Learn how to use the `expo.extra` section in your app config to store custom metadata.
+- Understand how to implement a custom logic for critical updates using a criticalIndex
 
 ### Tasks
 
@@ -22,4 +23,6 @@ todo
 
 ## See the solution
 
-todo
+Switch to the milestones branch on this [commit](https://github.com/expo/appjs25-eas-update-workshop-code/pull/1/commits/4d60413742222484822464317f9d700d869f38bd)
+
+![settings-tab](/assets/05/milestone.png)
