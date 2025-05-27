@@ -14,8 +14,8 @@ We previously created a development bundle identifier (iOS) or package (Android)
 ### Tasks
 
 - Make an `APP_VARIANT` environment variable.
-- Make sure it is resolved properly by running `TODO`
-- Convert `app.json` to `app.config.js` so we can use the environment variable for the bundle identifier and package name.
+- Make sure it is resolved properly by running `eas config -e [environment]`.
+- Convert `app.json` to `app.config.ts` so we can use the environment variable for the bundle identifier and package name.
 
 ### Resources
 
@@ -56,96 +56,129 @@ You can also view it in the [environment variables page in the website](https://
 
 ![website env vars](/assets/02/website-env-vars.png)
 
-## Dynamically resolve namespace in `app.config.js`
+## Dynamically resolve namespace in `app.config.ts`
 
-1. Convert your `app.json` to `app.config.js`:
-
-```bash
-mv app.json app.config.js
-```
-
-2. Update `app.config.js` to export the original `app.json`
+1. Create `app.config.ts` to amend the original `app.json`
 
 ```js
-module.exports = () => {
-  return {
-    expo: {
-      name: "Art Museum",
-      ...
-    }
-  };
-};
+import { ExpoConfig, ConfigContext } from "@expo/config";
+
+const config = ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: "Art Museum",
+  slug: "appjs25-update-workshop-code",
+});
+
+export default config;
 ```
 
 3. Verify it still gets resolved by running:
 
 ```bash
-npx expo config --type public
+eas config -e development
 ```
 
-4. Update the `app.config.js` to use the environment variable for the bundle identifier and package name:
+4. Update the `app.config.ts` to use the environment variable for the bundle identifier and package name:
 
 ```diff
-module.exports = () => {
-+  const appVariant = process.env.APP_VARIANT || "development";
+import { ExpoConfig, ConfigContext } from "@expo/config";
 
-  return {
-    expo: {
-      name: "Art Museum",
-      ios: {
--      bundleIdentifier: "com.expo.appjs25updateworkshopcode.[your-username].development"
-+        bundleIdentifier: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
-      },
-      android: {
--      package: "com.expo.appjs25updateworkshopcode.[your-username].development"
-+        package: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
-      },
-      // other configurations...
-    },
-  };
-};
++ const appVariant = process.env.APP_VARIANT || "development";
+
+const config = ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: "Art Museum",
+  slug: "appjs25-update-workshop-code",
++  ios: {
++    ...config.ios,
++    // bundleIdentifier: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
++  },
++  android: {
++    ...config.android,
++    // package: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
++  },
+});
 ```
 
-5. We want to visually differentiate the dev build from the preview one, so let's change the icon too.
+5. Remove the `ios.bundleIdentifier` and `android.package` from your `app.json`:
 
 ```diff
-module.exports = () => {
-  const appVariant = process.env.APP_VARIANT || "development";
-
-  return {
-    expo: {
-      name: "Art Museum",
--      icon: "./assets/images/icon.png",
-+      icon:
-+        appVariant === "development"
-+          ? "./assets/images/icon.png"
-+          : "./assets/images/preview-icon.png",
-      // other configurations...
-    },
-  };
-};
+{
+  "expo": {
+    "name": "Art Museum",
+    "slug": "appjs25-update-workshop-code",
+   "ios": {
+-    "bundleIdentifier": "com.expo.appjs25updateworkshopcode.[your-username]",
+   },
+   "android": {
+-    "package": "com.expo.appjs25updateworkshopcode.[your-username]",
+   }
+    // other configurations...
+  }
+}
 ```
 
-5. The preview and development builds have the same set of deeplinks, and we want to deeplink into the development build when we run `npx expo start` so we'll update the `scheme` to include the `appVariant`:
+6. We want to visually differentiate the dev build from the preview one, so let's change the icon in `app.config.ts`.
 
 ```diff
-module.exports = () => {
-  const appVariant = process.env.APP_VARIANT || "development";
-
-  return {
-    expo: {
-      name: "Art Museum",
--     scheme: "myapp",
-+     scheme: appVariant === "development" ? "myappdev" : "myapp",
-      // other configurations...
-    },
-  };
-};
+const config = ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: "Art Museum",
+  slug: "appjs25-update-workshop-code",
++  icon:
++    appVariant === "development"
++      ? "./assets/images/icon.png"
++      : "./assets/images/preview-icon.png",
+  android: {
+    ...config.android,
++    adaptiveIcon: {
++      ...config.android?.adaptiveIcon,
++      backgroundColor: appVariant === "development" ? "#FFFFFF" : "#7bd4d6",
++    },
 ```
 
-6. Going forward, you'll be running `npx expo start --scheme myappdev` to start the development build
+7. Remove the `icon` and `android.adaptiveIcon.backgroundColor` from your `app.json`:
 
-7. When you run your new preview build, it should use the `preview` environment variables automatically
+```diff
+{
+  "expo": {
+    "name": "Art Museum",
+    "slug": "appjs25-update-workshop-code",
+-   "icon": "./assets/images/icon.png",
+    "android": {
+     "adaptiveIcon": {
+-       "backgroundColor": "#FFFFFF"
+```
+
+8. The preview and development builds have the same set of deeplinks, and we want to deeplink into the development build when we run `npx expo start` so we'll update the `scheme` to include the `appVariant` in `app.config.ts`:
+
+```diff
+const appVariant = process.env.APP_VARIANT || "development";
+
+const config = ({ config }: ConfigContext): ExpoConfig => ({
+  ...config,
+  name: "Art Museum",
+  slug: "appjs25-update-workshop-code",
+  icon:
+    appVariant === "development"
+      ? "./assets/images/icon.png"
+      : "./assets/images/preview-icon.png",
++  scheme: appVariant === "development" ? "myappdev" : "myapp",
+```
+
+9. Remove the `scheme` from your `app.json`:
+
+```diff
+{
+  "expo": {
+    "name": "Art Museum",
+    "slug": "appjs25-update-workshop-code",
+-   "scheme": "myapp",
+```
+
+10. Going forward, you'll be running `npx expo start --scheme myappdev` to start the development build
+
+11. When you run your new preview build, it should use the `preview` environment variables automatically
 
 ```bash
 $ npx eas build --profile preview
@@ -155,7 +188,7 @@ Resolved "preview" environment for the build. Learn more: https://docs.expo.dev/
 Environment variables with visibility "Plain text" and "Sensitive" loaded from the "preview" environment on EAS: APP_VARIANT.
 ```
 
-8. In order to load the desired environment variables for updates, you can specify the `environment` flag:
+12. In order to load the desired environment variables for updates, you can specify the `environment` flag:
 
 ```bash
 $ npx eas update --environment preview
