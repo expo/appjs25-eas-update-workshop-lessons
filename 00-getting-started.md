@@ -20,7 +20,8 @@ In your `app.json`, associate your project with the workshop and namespace the s
 {
   "expo": {
 +    "owner": "appjs-2025-eas-update-workshop",
-+    "slug": "appjs25-update-workshop-code-[your-username]"
+-    "slug": "appjs25-update-workshop-code",
++    "slug": "appjs25-update-workshop-code-[your-username]",
   }
 }
 ```

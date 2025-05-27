@@ -67,7 +67,7 @@ import { ExpoConfig, ConfigContext } from "@expo/config";
 const config = ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "Art Museum",
-  slug: "appjs25-update-workshop-code",
+  slug: "appjs25-update-workshop-code-[your-username]",
 });
 
 export default config;
@@ -89,7 +89,7 @@ import { ExpoConfig, ConfigContext } from "@expo/config";
 const config = ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "Art Museum",
-  slug: "appjs25-update-workshop-code",
+  slug: "appjs25-update-workshop-code-[your-username]",
 +  ios: {
 +    ...config.ios,
 +    // bundleIdentifier: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
@@ -107,7 +107,7 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 {
   "expo": {
     "name": "Art Museum",
-    "slug": "appjs25-update-workshop-code",
+    "slug": "appjs25-update-workshop-code-[your-username]",
    "ios": {
 -    "bundleIdentifier": "com.expo.appjs25updateworkshopcode.[your-username]",
    },
@@ -125,7 +125,7 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 const config = ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "Art Museum",
-  slug: "appjs25-update-workshop-code",
+  slug: "appjs25-update-workshop-code-[your-username]",
 +  icon:
 +    appVariant === "development"
 +      ? "./assets/images/icon.png"
@@ -144,7 +144,7 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 {
   "expo": {
     "name": "Art Museum",
-    "slug": "appjs25-update-workshop-code",
+    "slug": "appjs25-update-workshop-code-[your-username]",
 -   "icon": "./assets/images/icon.png",
     "android": {
      "adaptiveIcon": {
@@ -159,7 +159,7 @@ const appVariant = process.env.APP_VARIANT || "development";
 const config = ({ config }: ConfigContext): ExpoConfig => ({
   ...config,
   name: "Art Museum",
-  slug: "appjs25-update-workshop-code",
+  slug: "appjs25-update-workshop-code-[your-username]",
   icon:
     appVariant === "development"
       ? "./assets/images/icon.png"
@@ -173,7 +173,7 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 {
   "expo": {
     "name": "Art Museum",
-    "slug": "appjs25-update-workshop-code",
+    "slug": "appjs25-update-workshop-code-[your-username]",
 -   "scheme": "myapp",
 ```
 
