@@ -73,6 +73,9 @@ In your `app.json`, add your development package name to the `android` section. 
 
 # Making your development build
 
+> **⏱️ Build taking too long?**  
+> If your build is taking too long, you can download the pre-built development client for Android [here](https://expo.dev/accounts/appjs-2025-eas-update-workshop/projects/appjs25-update-workshop-code-quintest113/builds/e966312a-dff4-4e76-8d8f-b33b60bd5cfc)
+
 ### iOS
 
 If you are building for the simulator, add this to your `eas.json`:
