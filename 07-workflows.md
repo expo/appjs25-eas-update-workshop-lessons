@@ -26,32 +26,36 @@ Create a workflow that automatically checks if we should rebuild the native app 
 
 1. Create a new GitHub repository by accessing https://github.com/new
 
-2. Set you git to use the new repository as a remote by running the following commands:
+2. Set you git to use the new repository as remote by running the following commands:
 
 ```bash
 git remote remove origin
 git remote add origin git@github.com:[owner]/[repo].git
 ```
 
-3. Configure your project EAS Workflows require a GitHub repository that's linked to your EAS project to run. You can link a GitHub repo to your EAS project with the following steps:
+3. Link your EAS project to the new GitHub repository by navigating to your project's GitHub settings. https://expo.dev/accounts/[username]/projects/[project-slug]/github
 
-- Create a GitHub repository for your Expo project if you haven't already.
-- Navigate to your project's GitHub settings. https://expo.dev/accounts/[username]/projects/[project-slug]/github
+4. With the setup ready, let's create a directory named `.eas/workflows` at the root of our project and copy the `deploy-to-production` YAML file inside from the`files/07`folder.
 
-4. Create a directory named `.eas/workflows` at the root of your project with a YAML file inside of it. For example: `.eas/workflows/deploy-to-production.yml`.
+5. Open the `.eas/workflows/deploy-to-production.yml` and inspect the pre-packaged jobs.
 
-Ensure that your project is set up with correctly and EAS is able to compute fingerprints by running the following command:
+Before triggering the workflow, ensure that your project is set up with correctly and EAS is able to compute fingerprints by running the following command:
 
 ```
 npx -y eas-cli@latest fingerprint:generate --platform android --non-interactive --json
 ```
 
+6. Now to trigger the workflow, commit this new file, create a tag named v1 and push changes.
 
 You can also manually trigger a workflow by running the following command:
 
 ```bash
 eas workflow:run .eas/workflows/deploy-to-production.yml
 ```
+
+7. Open the [EAS dashboard](https://expo.dev/accounts/[username]/projects/[project-slug]/workflows) and check the status of your workflow.
+
+![workflows](/assets/07/workflows.png)
 
 ## See the solution
 
