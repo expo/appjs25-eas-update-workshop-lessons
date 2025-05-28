@@ -4,8 +4,6 @@
 
 Automatically check for updates at a specified interval and when the app transitions to an active state.
 
-### Concepts
-
 ### Tasks
 
 - Use the React Native AppState change listener on mount (or when our callback changes) and removes it on unmount (or before re-subscribing)
@@ -82,6 +80,12 @@ Automatically check for updates at a specified interval and when the app transit
 ```
 
 `useAppState` now invokes your `appStateHandler` on every state change, passing an activating flag that’s true whenever the app moves into the active state.
+
+### Verify the changes
+
+```bash
+ eas update --branch preview --environment preview
+```
 
 ## See the solution
 
