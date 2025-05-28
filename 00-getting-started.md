@@ -90,6 +90,8 @@ If you are building for the simulator, add this to your `eas.json`:
 
 ```
 
+If you are building for a physical device, ensure you have the correct provisioning profile set up in your Apple Developer account. Follow the steps here for a [physical iOS device setup](https://docs.expo.dev/get-started/set-up-your-environment/?mode=development-build&platform=ios&device=physical).
+
 Then create your development build:
 
 ```bash
