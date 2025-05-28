@@ -23,6 +23,9 @@ Automatically check for updates at a specified interval with Background Tasks.
 
 ## Setup Background Task
 
+> **⏱️ Want a development build for hot layout reloads?**  
+> If making a development build is taking too long, you can download the pre-built development client for Android [here](https://expo.dev/accounts/appjs-2025-eas-update-workshop/projects/appjs25-update-workshop-code-quintest113/builds/1d5d6b73-2396-4c24-ac10-3f38d07448a3)
+
 1. Install dependencies:
 
 ```bash
@@ -174,6 +177,12 @@ JOB #u0a453/275: 216a359 <package-name>/androidx.work.impl.background.systemjob.
   u0a453 tag=*job*/<package-name>/androidx.work.impl.background.systemjob.SystemJobService#275
   Source: uid=u0a453 user=0 pkg=<package-name>
   ...
+```
+
+If that doesn't work, you can also find the job ID by running:
+
+```bash
+adb shell dumpsys jobscheduler | grep -F -m1 "<package-name>/" -B1 -A40
 ```
 
 7. Run the following command to trigger the background task:
