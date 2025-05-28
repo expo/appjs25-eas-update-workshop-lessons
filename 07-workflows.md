@@ -40,8 +40,6 @@ git remote add origin git@github.com:[owner]/[repo].git
 
 4. Create a directory named `.eas/workflows` at the root of your project with a YAML file inside of it. For example: `.eas/workflows/deploy-to-production.yml`.
 
-## See the solution
-
 Ensure that your project is set up with correctly and EAS is able to compute fingerprints by running the following command:
 
 ```
@@ -54,3 +52,7 @@ You can also manually trigger a workflow by running the following command:
 ```bash
 eas workflow:run .eas/workflows/deploy-to-production.yml
 ```
+
+## See the solution
+
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)

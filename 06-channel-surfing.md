@@ -23,4 +23,4 @@ todo
 
 ## See the solution
 
-todo
+Switch to the [milestones branch](https://github.com/expo/appjs25-eas-update-workshop-code/commits/milestones/)
