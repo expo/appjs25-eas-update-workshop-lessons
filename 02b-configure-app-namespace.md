@@ -32,13 +32,13 @@ We previously created a development bundle identifier (iOS) or package (Android)
 
 ```bash
 # dev
-npx eas env:create --scope=project --name APP_VARIANT --value development --environment development --visibility=plaintext
+eas env:create --scope=project --name APP_VARIANT --value development --environment development --visibility=plaintext
 
 # preview
-npx eas env:create --scope=project --name APP_VARIANT --value preview --environment preview --visibility=plaintext
+eas env:create --scope=project --name APP_VARIANT --value preview --environment preview --visibility=plaintext
 
 # production
-npx eas env:create --scope=project --name APP_VARIANT --value production --environment production --visibility=plaintext
+eas env:create --scope=project --name APP_VARIANT --value production --environment production --visibility=plaintext
 ```
 
 You can also create them in the [website](https://expo.dev/accounts/[account]/projects/[project]/environment-variables) too.
@@ -46,11 +46,11 @@ You can also create them in the [website](https://expo.dev/accounts/[account]/pr
 2 Ensure the environment variable is resolved
 
 ```bash
-npx eas env:list --environment development
+eas env:list --environment development
 
-npx eas env:list --environment preview
+eas env:list --environment preview
 
-npx eas env:list --environment production
+eas env:list --environment production
 ```
 
 You can also view it in the [environment variables page in the website](https://expo.dev/accounts/[account]/projects/[project]/environment-variables).
@@ -92,11 +92,11 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
   slug: "appjs25-update-workshop-code-[your-username]",
 +  ios: {
 +    ...config.ios,
-+    // bundleIdentifier: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
++    bundleIdentifier: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
 +  },
 +  android: {
 +    ...config.android,
-+    // package: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
++    package: `com.expo.appjs25updateworkshopcode.[your-username].${appVariant}`,
 +  },
 });
 ```
@@ -119,7 +119,7 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 }
 ```
 
-6. We want to visually differentiate the dev build from the preview one, so let's change the icon in `app.config.ts`.
+6a. We want to visually differentiate the dev build from the preview one, so let's change the icon in `app.config.ts`.
 
 ```diff
 const config = ({ config }: ConfigContext): ExpoConfig => ({
@@ -137,6 +137,8 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 +      backgroundColor: appVariant === "development" ? "#FFFFFF" : "#7bd4d6",
 +    },
 ```
+
+6b. From the `files` folder, take `preview-icon.png` and copy it to `assets/images/preview-icon.png`.
 
 7. Remove the `icon` and `android.adaptiveIcon.backgroundColor` from your `app.json`:
 
@@ -182,7 +184,7 @@ const config = ({ config }: ConfigContext): ExpoConfig => ({
 11. When you run your new preview build, it should use the `preview` environment variables automatically
 
 ```bash
-$ npx eas build --profile preview
+$ eas build --profile preview
 
 ✔ Select platform › iOS
 Resolved "preview" environment for the build. Learn more: https://docs.expo.dev/eas/environment-variables/#setting-the-environment-for-your-builds
@@ -192,7 +194,7 @@ Environment variables with visibility "Plain text" and "Sensitive" loaded from t
 12. In order to load the desired environment variables for updates, you can specify the `environment` flag:
 
 ```bash
-$ npx eas update --environment preview
+$ eas update --branch preview --environment preview
 
 Environment variables with visibility "Plain text" and "Sensitive" loaded from the "preview" environment on EAS: APP_VARIANT.
 ```
